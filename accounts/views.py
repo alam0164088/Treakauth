@@ -4,6 +4,11 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
 from .serializers import UserSerializer
+from django.http import JsonResponse
+
+def home(request):
+    return JsonResponse({"message": "Welcome to API 🚀"})
+
 
 # Register
 class RegisterView(generics.CreateAPIView):
