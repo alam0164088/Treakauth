@@ -5,6 +5,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
 from .serializers import UserSerializer
 
+from rest_framework.permissions import IsAuthenticated
+from .serializers import NotificationSerializer
+
 
 from django.core.mail import send_mail
 from django.conf import settings
@@ -47,3 +50,17 @@ class LogoutView(APIView):
             return Response({"message": "Logout successful"})
         except Exception:
             return Response({"error": "Invalid token"}, status=400)
+
+class NotificationToggleView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = NotificationSerializer(request.user)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = NotificationSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)

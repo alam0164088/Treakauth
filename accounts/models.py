@@ -8,6 +8,7 @@ class User(AbstractUser):
         ('traveler', 'Traveler'),
     )
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="traveler")
+    receive_notifications = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.username} ({self.role})"
