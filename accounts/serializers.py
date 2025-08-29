@@ -2,6 +2,14 @@ from rest_framework import serializers
 from .models import User
 from django.contrib.auth.hashers import make_password
 
+
+class PasswordResetEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+class PasswordResetOTPSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    otp = serializers.CharField(max_length=6)
+    new_password = serializers.CharField(write_only=True, min_length=6)
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
