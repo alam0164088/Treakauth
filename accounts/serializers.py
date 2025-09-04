@@ -37,19 +37,29 @@ class PasswordResetOTPSerializer(serializers.Serializer):
         return user
 
 class UserSerializer(serializers.ModelSerializer):
+    password2 = serializers.CharField(write_only=True, required=True)  # Confirm password
+
     class Meta:
         model = User
-        fields = ["id", "username", "email", "password", "role", "receive_notifications"]
+        fields = ["id", "username", "email", "password", "password2", "role", "receive_notifications"]
         extra_kwargs = {"password": {"write_only": True}}
 
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password2']:
+            raise serializers.ValidationError({"password": "Passwords do not match."})
+        return attrs
+
     def create(self, validated_data):
+        validated_data.pop('password2')  # Remove confirm password
         validated_data["password"] = make_password(validated_data["password"])
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
         if 'password' in validated_data:
             validated_data['password'] = make_password(validated_data['password'])
+        validated_data.pop('password2', None)
         return super().update(instance, validated_data)
+
     
 
 class NotificationSerializer(serializers.ModelSerializer):

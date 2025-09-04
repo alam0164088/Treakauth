@@ -1,17 +1,46 @@
 trekbot/
+├── accounts
+│   ├── admin.py
+│   ├── apps.py
+│   ├── decorators.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── models.py
+│   ├── permissions.py
+│   ├── __pycache__
+│   ├── serializers.py
+│   ├── signals.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── admin_dashboard
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── models.py
+│   ├── __pycache__
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── d
+├── db.sqlite3
+├── env
+│   ├── bin
+│   ├── include
+│   ├── lib
+│   ├── lib64 -> lib
+│   └── pyvenv.cfg
 ├── manage.py
-├── trekbot_project/          # main project folder
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   ├── asgi.py
-│   └── views.py
-└── accounts/                 # your custom app
-    ├── __init__.py
-    ├── admin.py
-    ├── apps.py
-    ├── models.py
-    ├── serializers.py
-    ├── urls.py
-    └── views.py
+├── README.md
+├── requirements.txt
+├── trekbot_project
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+└── t.txt

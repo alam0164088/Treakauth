@@ -42,6 +42,7 @@ class Notification(models.Model):
 class Vendor(models.Model):
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="vendor")
+    shop = models.CharField(max_length=150)  # এখানে shop নামের ফিল্ড
     location_lat = models.FloatField()
     location_lng = models.FloatField()
 

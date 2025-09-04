@@ -5,5 +5,6 @@ from .views import home
 urlpatterns = [
     path("", home, name="home"),
     path("admin/", admin.site.urls),
-    path("api/accounts/", include("accounts.urls")),  # এখানে accounts এর URL গুলো include হচ্ছে
+    path("api/accounts/", include("accounts.urls")),
+    path('api/admin-dashboard/', include('admin_dashboard.urls')), # এখানে accounts এর URL গুলো include হচ্ছে
 ]

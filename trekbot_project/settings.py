@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'accounts',
+    'admin_dashboard',
 ]
 
 # 🔹 Middleware
@@ -100,10 +101,10 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),  # 12 ঘণ্টা
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
     'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': False,  # পুরানো token blacklist হবে না
+    'BLACKLIST_AFTER_ROTATION': True,
 }
 
 

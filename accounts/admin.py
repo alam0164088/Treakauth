@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User, PasswordResetOTP
+from .models import User, PasswordResetOTP, Vendor, Reward, CheckIn, RewardRedemption, Notification
 
 # ---------------- Custom User Admin ----------------
 class UserAdmin(BaseUserAdmin):
@@ -25,3 +25,8 @@ class UserAdmin(BaseUserAdmin):
 # ---------------- Register Models ----------------
 admin.site.register(User, UserAdmin)
 admin.site.register(PasswordResetOTP)
+admin.site.register(Vendor)
+admin.site.register(Reward)
+admin.site.register(CheckIn)
+admin.site.register(RewardRedemption)
+admin.site.register(Notification)
